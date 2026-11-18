@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psico-SST | Salud Mental y Seguridad en el Trabajo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Encabezado Principal -->
+  <header class="navbar">
+    <div class="brand">
+      <div class="shield-icon">Ψ</div>
+      <h1>PSICO-<span>SST</span></h1>
+    </div>
+    <nav>
+      <button type="button" class="nav-btn active" onclick="switchTab('modulo1', event)">1. Normas y Descargas</button>
+      <button type="button" class="nav-btn" onclick="switchTab('modulo2', event)">2. Encuesta Anónima</button>
+      <button type="button" class="nav-btn" onclick="switchTab('modulo3', event)">3. Videos y Guías</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- MODULO 1: DOCUMENTACION Y NORMAS -->
+    <section id="modulo1" class="tab-content active">
+      <h2>Marco Normativo y Documentos Descargables</h2>
+      <p class="section-desc">Consulta y descarga las guías oficiales vigentes en Colombia sobre riesgo psicosocial, acoso laboral, salud mental y desconexión.</p>
+
+      <div class="legal-banner">
+        <h3>Protección de Datos y Privacidad (Ley 1581 de 2012)[cite: 3]</h3>
+        <p>Tus respuestas son 100% anónimas. No solicitamos cédula, nombre ni correo electrónico. Las empresas ven resultados agrupados, nunca individuales (mínimo 5 respuestas para generar reportes)[cite: 3].</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <h4>Guía: Acoso Laboral en Colombia</h4>
+          <p>De la Ley 1010 de 2006 a la Reforma Laboral de 2025 y el Decreto 1040 de 2026[cite: 4].</p>
+          <a href="assets/docs/leyes_acoso_laboral_colombia.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Compendio de Salud Mental</h4>
+          <p>Leyes marco, decretos laborales y resoluciones de riesgo psicosocial (vigente 2026).</p>
+          <a href="assets/docs/decretos_leyes_salud_mental_colombia.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Resumen Riesgo Psicosocial</h4>
+          <p>Resoluciones 2764 de 2022 y 2646 de 2008, periodicidad y perfil profesional.</p>
+          <a href="assets/docs/resumen_normativo_riesgo_psicosocial.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Guía Rápida: Salud Mental</h4>
+          <p>Decreto 729 de 2025 (Política Nacional) y leyes complementarias.</p>
+          <a href="assets/docs/decretos_salud_mental_colombia.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Prevención de Acoso y Violencia</h4>
+          <p>Modalidades, canales de reporte, Ley 2365 de 2024 y Convenio 190 de la OIT.</p>
+          <a href="assets/docs/acoso_laboral_y_violencia_colombia.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Código de Conducta Laboral</h4>
+          <p>Estructura obligatoria, comités de convivencia y compromisos de líderes.</p>
+          <a href="assets/docs/codigo_de_conducta_convivencia_laboral_colombia.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Derecho de Desconexión Laboral</h4>
+          <p>Lineamientos de la Ley 2191 de 2022 y Sentencia C-331 de 2023.</p>
+          <a href="assets/docs/desconexion_laboral_colombia.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Estrés y Crisis Emocionales</h4>
+          <p>Protocolos de intervención, vigilancia epidemiológica y primeros auxilios.</p>
+          <a href="assets/docs/estres_laboral_y_crisis_emocionales_colombia.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+        <div class="card">
+          <h4>Formato de Asistencia a Capacitaciones</h4>
+          <p>Control oficial de asistencia, firmas y registro de horas para capacitaciones (PS-SST-01).</p>
+          <a href="assets/docs/Formato_Asistencia_Capacitaciones.pdf" download class="btn-download">Descargar PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULO 2: ENCUESTA DE RIESGO PSICOSOCIAL -->
+    <section id="modulo2" class="tab-content">
+      <h2>Encuesta Anónima de Riesgo Psicosocial</h2>
+      <p class="section-desc">Por favor responde con total sinceridad. Selecciona una opción para cada pregunta.</p>
+
+      <form id="psicoForm">
+
+        <div class="question-block">
+          <p class="q-text">1. Al terminar mi jornada me siento con energía suficiente para atender mi vida personal.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p1" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p1" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p1" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p1" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">2. Logro manejar la presión de mi trabajo sin sentirme desbordado/a.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p2" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p2" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p2" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p2" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">3. Duermo bien y descanso lo suficiente durante la semana laboral.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p3" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p3" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p3" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p3" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">4. Cuando siento mucha tensión en el trabajo, puedo hacer una pausa para recuperarme.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p4" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p4" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p4" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p4" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">5. Puedo ignorar mensajes o llamadas de trabajo fuera de mi horario sin que mi jefe o equipo me lo reclamen.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p5" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p5" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p5" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p5" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">6. Mis vacaciones, permisos y días de descanso se respetan completos.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p6" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p6" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p6" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p6" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">7. Mi jefe o mi equipo evita pedirme tareas fuera de mi jornada, salvo urgencias justificadas.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p7" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p7" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p7" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p7" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">8. La cantidad de trabajo que tengo se puede cumplir dentro de mi jornada.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p8" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p8" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p8" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p8" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">9. Cuando tengo un problema o dudas en el trabajo, recibo apoyo de mi jefe o de mis compañeros.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p9" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p9" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p9" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p9" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">10. Me siento respetado/a y tratado/a con dignidad en mi lugar de trabajo.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p10" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p10" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p10" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p10" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">11. Me siento cómodo/a usando aplicaciones en mi celular para temas de mi trabajo.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p11" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p11" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p11" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p11" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">12. Me gustaría contar con una app que me explique mis derechos sobre salud mental en el trabajo.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p12" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p12" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p12" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p12" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">13. Prefiero capacitarme en riesgo psicosocial con módulos cortos y digitales que con charlas largas.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p13" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p13" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p13" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p13" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">14. Confiaría en reportar una situación de acoso o malestar laboral a través de una app, si es confidencial.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p14" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p14" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p14" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p14" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="q-text">15. Creo que mi empresa debería ofrecer más herramientas digitales para cuidar la salud mental de sus trabajadores.</p>
+          <div class="options-group">
+            <label><input type="radio" name="p15" value="Siempre" required> Siempre</label>
+            <label><input type="radio" name="p15" value="Casi siempre"> Casi siempre</label>
+            <label><input type="radio" name="p15" value="Casi nunca"> Casi nunca</label>
+            <label><input type="radio" name="p15" value="Nunca"> Nunca</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Respuestas Anónimas</button>
+      </form>
+      <div id="surveyFeedback" class="feedback-msg"></div>
+    </section>
+
+    <!-- MODULO 3: REPOSITORIO DE VIDEOS Y GUIAS PRÁCTICAS -->
+    <section id="modulo3" class="tab-content">
+      <h2>Divulgación y Pausas Activas Interactivas</h2>
+      <p class="section-desc">Cápsulas audiovisuales y guías visuales paso a paso para el autocuidado y la salud mental.</p>
+
+      <!-- Subsección de Infografías Prácticas con clase zoomable -->
+      <h3 style="color: var(--verde-profundo); margin-top: 1.5rem; margin-bottom: 1rem;">Guías Visuales de Autocuidado (Haz clic para ampliar)</h3>
+      
+      <div class="grid-cards">
+        <div class="card">
+          <h4>Relajación Muscular (Tensa y Suelta)</h4>
+          <p>Técnica de 6 pasos para liberar tensión física en manos, brazos, cuello y cuerpo.</p>
+          <img src="assets/images/relajacion_muscular.png" alt="Relajación muscular" class="zoomable-img">
+        </div>
+
+        <div class="card">
+          <h4>Cómo Relajarte y Respirar Paso a Paso</h4>
+          <p>Ejercicios de postura, respiración abdominal y escaneo corporal.</p>
+          <img src="assets/images/relajacion_respiracion.png" alt="Relajación y respiración" class="zoomable-img">
+        </div>
+
+        <div class="card">
+          <h4>Protocolo ante Ataques de Pánico</h4>
+          <p>Pasos de emergencia para recuperar el control de la respiración y la calma.</p>
+          <img src="assets/images/respiracion_panico.png" alt="Ataque de pánico" class="zoomable-img">
+        </div>
+
+        <div class="card">
+          <h4>Qué Hacer en Caso de Cansancio Extremo</h4>
+          <p>Pautas breves de recuperación, hidratación y comunicación con líderes.</p>
+          <img src="assets/images/cansancio_extremo.png" alt="Cansancio extremo" class="zoomable-img">
+        </div>
+      </div>
+
+      <!-- Repositorio de Videos (Requieren formato .mp4) -->
+      <h3 style="color: var(--verde-profundo); margin-top: 2.5rem; margin-bottom: 1rem;">Cápsulas Audiovisuales</h3>
+      <div class="grid-cards">
+        <div class="card video-card">
+          <h4>Manejo del Estrés y Autorregulación</h4>
+          <div class="video-container">
+            <video controls controlsList="nodownload" preload="metadata" style="width: 100%; border-radius: 6px;">
+              <source src="assets/video/manejo_estres.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+        </div>
+
+        <div class="card video-card">
+          <h4>Comunicación Asertiva y Resolución de Conflictos</h4>
+          <div class="video-container">
+            <video controls controlsList="nodownload" preload="metadata" style="width: 100%; border-radius: 6px;">
+              <source src="assets/video/comunicacion_asertiva.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+        </div>
+
+        <div class="card video-card">
+          <h4>Desconexión Laboral y Equilibrio Personal</h4>
+          <div class="video-container">
+            <video controls controlsList="nodownload" preload="metadata" style="width: 100%; border-radius: 6px;">
+              <source src="assets/video/desconexion_laboral.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL / VISOR DE IMAGEN AMPLIADA -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
