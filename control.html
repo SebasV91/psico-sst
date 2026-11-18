@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Control SST | Gestión de Respuestas</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .admin-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-top: 5px solid var(--coral-intenso);
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .admin-title h2 {
+      color: var(--verde-profundo);
+    }
+    .admin-title p {
+      color: #64748B;
+      font-size: 0.95rem;
+    }
+    .stats-box {
+      background: var(--crema);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--verde-cuidado);
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: #4A5568;
+    }
+    .btn-action {
+      background-color: var(--verde-cuidado);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-action:hover {
+      background-color: var(--verde-profundo);
+    }
+    .btn-danger {
+      background-color: #E53E3E;
+      margin-left: 10px;
+    }
+    .btn-danger:hover {
+      background-color: #C53030;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--verde-cuidado);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado del Panel -->
+  <header class="navbar">
+    <div class="brand">
+      <div class="shield-icon">Ψ</div>
+      <h1>PSICO-<span>SST (Administración)</span></h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="admin-container">
+      
+      <div class="admin-header">
+        <div class="admin-title">
+          <h2>Panel de Gestión y Reportes</h2>
+          <p>Métricas y descarga de datos del formulario de riesgo psicosocial.</p>
+        </div>
+      </div>
+
+      <!-- Resumen Estadístico Local -->
+      <div class="stats-box">
+        <div>
+          <div id="totalEncuestas" class="stat-number">0</div>
+          <div class="stat-label">Evaluaciones Registradas</div>
+        </div>
+        <div>
+          <div id="promedioGlobal" class="stat-number">0.0 / 4.0</div>
+          <div class="stat-label">Promedio de Bienestar Grupal</div>
+        </div>
+      </div>
+
+      <!-- Alerta Normativa -->
+      <div class="legal-banner" style="margin-bottom: 2rem;">
+        <h3>Nota de Privacidad y Validación</h3>
+        <p>Por normatividad de protección de datos (Ley 1581 de 2012), los registros se almacenan temporalmente en el navegador actual. Asegúrate de descargar el reporte consolidado antes de limpiar los datos del equipo.</p>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div style="text-align: center;">
+        <button onclick="descargarReporteExcel()" class="btn-action">📥 Descargar Reporte en Excel (CSV)</button>
+        <button onclick="limpiarRegistros()" class="btn-action btn-danger">🗑️ Borrar Datos Locales</button>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="index.html" class="back-link">← Volver al inicio de la aplicación</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Cargar estadísticas al abrir el panel de control
+    document.addEventListener('DOMContentLoaded', () => {
+      actualizarEstadisticas();
+    });
+
+    function obtenerDatos() {
+      return JSON.parse(localStorage.getItem('psico_sst_responses')) || [];
+    }
+
+    function actualizarEstadisticas() {
+      const data = obtenerDatos();
+      const totalElem = document.getElementById('totalEncuestas');
+      const promedioElem = document.getElementById('promedioGlobal');
+
+      totalElem.innerText = data.length;
+
+      if (data.length > 0) {
+        let sumaPromedios = 0;
+        data.forEach(item => {
+          sumaPromedios += parseFloat(item.averageScore || 0);
+        });
+        const globalAvg = (sumaPromedios / data.length).toFixed(2);
+        promedioElem.innerText = globalAvg + " / 4.0";
+      } else {
+        promedioElem.innerText = "0.0 / 4.0";
+      }
+    }
+
+    // Función para generar y descargar el reporte en CSV (Compatible con Excel)
+    function descargarReporteExcel() {
+      const storedResponses = obtenerDatos();
+      
+      if (storedResponses.length === 0) {
+        alert('No hay respuestas registradas todavía para exportar.');
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,Fecha_Hora,";
+      for (let i = 1; i <= 15; i++) {
+        csvContent += `P${i},`;
+      }
+      csvContent += "Puntaje_Total,Promedio\r\n";
+
+      storedResponses.forEach(item => {
+        let row = `"${item.timestamp}",`;
+        for (let i = 1; i <= 15; i++) {
+          row += `"${item.answers['p' + i] || 'N/A'} (${item.scores['p' + i] || 0})",`;
+        }
+        row += `${item.totalScore},${item.averageScore}\r\n`;
+        csvContent += row;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "reporte_riesgo_psicosocial_sst.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Función para vaciar los registros locales si se requiere reiniciar la medición
+    function limpiarRegistros() {
+      if (confirm('¿Estás seguro de borrar todos los registros almacenados en este navegador? Esta acción no se puede deshacer.')) {
+        localStorage.removeItem('psico_sst_responses');
+        actualizarEstadisticas();
+        alert('Registros eliminados correctamente.');
+      }
+    }
+  </script>
+</body>
+</html>
